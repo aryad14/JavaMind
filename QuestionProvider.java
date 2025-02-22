@@ -21,6 +21,8 @@ public class QuestionProvider {
     }
 
     public void getQuestions() {
-        System.out.println("Getting questions...");
+        for (Questions question : q) {
+            System.out.println(question);
+        }
     }
 }
