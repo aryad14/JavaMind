@@ -1,6 +1,7 @@
 public class QuestionProvider {
 
     Questions[] q = new Questions[3];
+    String[] selection = new String[3];
 
     public QuestionProvider() {
         q[0] = new Questions(
@@ -24,5 +25,23 @@ public class QuestionProvider {
         for (Questions question : q) {
             System.out.println(question);
         }
+    }
+
+    public void playQuiz() {
+        int score=0;
+        for (Questions question: q) {
+            System.out.println("Question " + question.getId() + ": " + question.getQuestion());
+            String[] options = question.getOptions();
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ". " + options[i]);
+            }
+            System.out.print("Enter your answer: ");
+            String userAnswer = System.console().readLine();
+
+            if (userAnswer.equalsIgnoreCase(question.getAnswer())) {
+                score++;
+            }
+        }
+        System.out.println("Your score is: " + score);
     }
 }
